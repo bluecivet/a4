@@ -30,6 +30,9 @@ public class ClockComponent extends JComponent
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-
+        Clock clock = new Clock(hour,min, getWidth() >> 1, getHeight() >> 1);
+        clock.draw(g2);
+        DigtialClock dclock = new DigtialClock(hour,min, getWidth() >> 1, getHeight() >> 1);
+        dclock.draw(g2);
     }
 }

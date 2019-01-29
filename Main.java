@@ -69,7 +69,14 @@ public class Main
             showMessage("see you!","exit");
             return;
         }
-        showMessage(userInput,"title");
+        String[] times = userInput.split(":");
+        int hour = Integer.parseInt(times[0]);
+        int min = Integer.parseInt(times[1]);
+        JFrame frame = new JFrame();
+        setFrame(frame);
+        ClockComponent clock = new ClockComponent(hour,min);
+        frame.add(clock);
+        frame.setVisible(true);
     }
 
 
@@ -149,7 +156,7 @@ public class Main
         //check if the number are in range of 0 to 60
         int hour = Integer.parseInt(input[0]);
         int min = Integer.parseInt(input[1]);
-        if(hour > 60 || min > 60)
+        if(hour > 23 || min > 59)
         {
             showMessage("the number incorrecct", "error");
             return false;
@@ -177,7 +184,11 @@ public class Main
 
     public static void showCurrentTime()
     {
-
+       JFrame frame = new JFrame();
+       setFrame(frame);
+       ClockComponent clock = new ClockComponent();
+       frame.add(clock);
+       frame.setVisible(true);
     }
 
 
@@ -186,8 +197,8 @@ public class Main
 
     public static void setFrame(JFrame jf)
     {
-        jf.setSize(500,500);
-        jf.setLocation(300,300);
+        jf.setSize(800,700);
+        jf.setLocation(300,100);
         jf.setTitle("clock");
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
